@@ -19,4 +19,12 @@
     <style name="activity_main" parent="primary_btn">
         <item name="android:textSize">@dimen/btn_main_activity_text_size</item>
     </style>
+
+
+    <!-- Progress bar -->
+
+    <style name="progress_bar" parent="primary_btn">
+        <item name="android:indeterminateTint">@color/blue_2</item> <!-- Orange color -->
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
 </resources>

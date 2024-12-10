@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.cuenta_bancaria.loadingActivity.ProgressBarActivity
+import com.example.cuenta_bancaria.register.RegisterActivity
 import com.example.cuenta_bancaria.utils.Utils
 
 
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             Utils.goAnotherActivity(this,ProgressBarActivity::class.java)
         }
         registerBtn.setOnClickListener {
-
+            Utils.goAnotherActivity(this,RegisterActivity::class.java)
         }
         exitBtn.setOnClickListener {
 

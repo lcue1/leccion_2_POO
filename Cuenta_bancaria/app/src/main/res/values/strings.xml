@@ -6,6 +6,18 @@
     <string name="init_sesion_btn">Iniciar sesion</string>
     <string name="register_btn">Registrarse</string>
     <string name="exit_btn">Salir</string>
+    <!--Register activity -->
+    <string name="title_register_activity">Registrarse</string>
+    <string name="holder_acount_name_hint">Ingrese nombre</string>
+    <string name="avalible_balance_hint">Ingrese saldo inicial</string>
+    <string name="user_hint">Usuario</string>
+    <string name="password_hint">Password</string>
+    <string name="saving_acount">Ahorrros</string>
+    <string name="checking_acount">Corriente</string>
+    <string name="title_aconnt_type">Tipo de cuenta</string>
+    <string name="save_register_btn">Guardar</string>
+    <!--General strings -->
+    <string name="description_back_btn">back button</string>
 
 
 </resources>

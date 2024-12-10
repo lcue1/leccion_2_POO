@@ -6,8 +6,12 @@
         <item name="android:textSize">@dimen/normal_text_size</item>
         <item name="android:textColor">@color/blue_2</item>
     </style>
-    <style name="title_text_size"  parent="primary_text">
+    <style name="title_text"  parent="primary_text">
         <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
+
+    <style name="subtitle_text"  parent="primary_text">
+        <item name="android:textSize">@dimen/subTitle_text_size</item>
     </style>
 
     <!--Buttons -->
@@ -27,4 +31,14 @@
         <item name="android:indeterminateTint">@color/blue_2</item> <!-- Orange color -->
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
+    <!-- Edit text -->
+
+    <style name="edit_text" parent="primary_btn">
+        <item name="android:textSize">@dimen/edit_text_font_size</item> <!-- Orange color -->
+        <item name="android:textColor">@color/blue_2</item>
+    </style>
+
+
+
+
 </resources>

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Cuenta_bancaria</string>
+
+    <!--Main Activity -->
+    <string name="title_activity_main">Banco ITECSUR</string>
+    <string name="init_sesion_btn">Iniciar sesion</string>
+    <string name="register_btn">Registrarse</string>
+    <string name="exit_btn">Salir</string>
+
+
+
 </resources>

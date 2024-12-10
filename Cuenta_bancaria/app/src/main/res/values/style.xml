@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Text -->
+    <style name="primary_text" >
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textColor">@color/blue_2</item>
+    </style>
+    <style name="title_text_size"  parent="primary_text">
+        <item name="android:textSize">@dimen/title_text_size</item>
+    </style>
+
+    <!--Buttons -->
+    <style name="primary_btn">
+        <item name="android:backgroundTint">@color/blue_1</item>
+        <item name="android:textColor">@color/blue_2</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+    <style name="activity_main" parent="primary_btn">
+        <item name="android:textSize">@dimen/btn_main_activity_text_size</item>
+    </style>
+</resources>

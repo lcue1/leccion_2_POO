@@ -1,5 +1,6 @@
-package com.example.cuenta_bancaria.loadingActivity
+package com.example.cuenta_bancaria.AuxiliarActivities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -25,9 +26,15 @@ class ProgressBarActivity : AppCompatActivity() {
             insets
         }
         initAtributtes()
-        Utils.showProgressBar(progressBar,loadingAnimation){Utils.goAnotherActivity(this, MainActivity::class.java)}
+        val targetActivity = intent.getSerializableExtra("targetActivity") as? Class<*>
+        Utils.showProgressBar(progressBar,loadingAnimation){
+            if (targetActivity != null) {
+                Utils.goAnotherActivity(this, targetActivity)
+            }
+        }
 
-    }   private fun initAtributtes() {
+    finishActivity(1)    }
+    private fun initAtributtes() {
         // Initialize UI elements
         progressBar = findViewById(R.id.loading_spinner)
         loadingAnimation = AnimationUtils.loadAnimation(this, R.anim.loader) // Initialize animation

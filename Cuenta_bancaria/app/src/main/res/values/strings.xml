@@ -19,5 +19,8 @@
     <!--General strings -->
     <string name="description_back_btn">back button</string>
 
+    <!-- Login activity -->
+    <string name="title_login_activity">Iniciar sesion</string>
 
+    <string name="login_btn">Iniciar</string>
 </resources>

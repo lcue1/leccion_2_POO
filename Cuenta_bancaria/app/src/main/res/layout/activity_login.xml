@@ -5,9 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register.RegisterActivity"
+    tools:context=".login.LoginActivity"
     android:orientation="vertical"
-    android:gravity="center"
+
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/title_register_activity"
+            android:text="@string/title_login_activity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/back_btn"
+            android:id="@+id/back_login_abtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back_btn"
@@ -47,77 +47,31 @@
         android:layout_marginEnd="80dp"
         >
         <EditText
-            android:id="@+id/name_editTtext"
+            android:id="@+id/user_edit_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/holder_acount_name_hint"
-            style="@style/edit_text"
-            />
-        <EditText
-            android:id="@+id/balance_etitText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:hint="@string/avalible_balance_hint"
-            android:inputType="numberDecimal"
-            style="@style/edit_text"
-            />
-        <EditText
-            android:id="@+id/user_etitText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:hint="@string/user_hint"
             style="@style/edit_text"
             />
         <EditText
-            android:id="@+id/password_editText"
+            android:id="@+id/pass_edit_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:hint="@string/password_hint"
+            android:inputType="numberDecimal"
             style="@style/edit_text"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_aconnt_type"
-            android:layout_marginTop="30dp"
-            style="@style/subtitle_text"
-            />
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:checkedButton="@+id/radio_savings">
-            <RadioButton
-                android:id="@+id/radio_savings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/saving_acount"
-                android:layout_marginEnd="10dp"
-
-                />
-            <RadioButton
-                android:id="@+id/radio_checking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/checking_acount"
-                />
-        </RadioGroup>
-
 
         <Button
-            android:id="@+id/save_btn"
+            android:id="@+id/login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@string/save_register_btn"
+            android:layout_marginTop="100dp"
+            android:text="@string/login_btn"
             style="@style/activity_main"
             />
 
     </LinearLayout>
-
 </LinearLayout>

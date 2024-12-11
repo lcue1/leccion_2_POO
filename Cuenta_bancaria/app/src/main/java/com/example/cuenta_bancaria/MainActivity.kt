@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.cuenta_bancaria.AuxiliarActivities.ProgressBarActivity
+import com.example.cuenta_bancaria.login.LoginActivity
 import com.example.cuenta_bancaria.register.RegisterActivity
 import com.example.cuenta_bancaria.utils.Utils
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun addClickListener() {
         initSesionBtn.setOnClickListener {
 
-            Utils.goAnotherActivity(this,ProgressBarActivity::class.java)
+            Utils.goAnotherActivity(this,LoginActivity::class.java)
             finishActivity(1)
         }
         registerBtn.setOnClickListener {

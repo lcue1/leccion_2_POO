@@ -14,9 +14,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.cuenta_bancaria.R
 import com.example.cuenta_bancaria.data.DatabaseHelper
 import com.example.cuenta_bancaria.data.UserDao
-import com.example.cuenta_bancaria.AuxiliarActivities.ProgressBarActivity
+import com.example.cuenta_bancaria.extraActivities.ProgressBarActivity
 import com.example.cuenta_bancaria.MainActivity
-import com.example.cuenta_bancaria.utils.Utils
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var editTexts:List<EditText>// used to validate edittext in foreach

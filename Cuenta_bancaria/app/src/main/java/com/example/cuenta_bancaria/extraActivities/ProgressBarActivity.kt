@@ -1,6 +1,5 @@
-package com.example.cuenta_bancaria.AuxiliarActivities
+package com.example.cuenta_bancaria.extraActivities
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -9,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.cuenta_bancaria.MainActivity
 import com.example.cuenta_bancaria.R
 import com.example.cuenta_bancaria.utils.Utils
 

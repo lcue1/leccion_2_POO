@@ -13,16 +13,19 @@
         android:theme="@style/Theme.Cuenta_bancaria"
         tools:targetApi="31">
         <activity
+            android:name=".user.UserActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".AuxiliarActivities.MessageUserActivit"
+            android:name=".extraActivities.MessageUserActivit"
             android:exported="false" />
         <activity
             android:name=".register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".AuxiliarActivities.ProgressBarActivity"
+            android:name=".extraActivities.ProgressBarActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

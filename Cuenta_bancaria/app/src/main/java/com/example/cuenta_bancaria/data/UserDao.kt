@@ -103,4 +103,29 @@
             cursor.close()
             return accountDetails
         }
+
+        //update deposit
+        fun updateBalance(accountNumber: String, newBalance: Double): Int {
+            val db = dbHelper.writableDatabase
+
+            // Create ContentValues object to hold the new balance
+            val values = ContentValues().apply {
+                put(COLUMN_BALANCE, newBalance)
+            }
+
+            // Define the selection criteria (where clause)
+            val selection = "$COLUMN_NUMBERACOUNT = ?"
+            val selectionArgs = arrayOf(accountNumber)
+
+            return try {
+                // Perform the update operation and return the number of rows affected
+                val rowsAffected = db.update(TABLE_NAME, values, selection, selectionArgs)
+                rowsAffected // Returns the number of rows affected (should be 1 if successful)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                -1 // Return -1 if there's an error
+            } finally {
+                db.close() // Always close the database
+            }
+        }
     }

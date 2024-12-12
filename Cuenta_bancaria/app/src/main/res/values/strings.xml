@@ -21,6 +21,13 @@
 
     <!-- Login activity -->
     <string name="title_login_activity">Iniciar sesion</string>
-
     <string name="login_btn">Iniciar</string>
+    <!-- User activity -->
+    <string name="acount_number">Cta No:</string>
+    <string name="user_name">Usuario::</string>
+    <string name="balace">Saldo:</string>
+    <string name="acount_type">Cuenta: :</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

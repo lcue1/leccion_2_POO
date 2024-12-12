@@ -5,6 +5,158 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.UserActivity">
+    tools:context=".user.UserActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
 
+    <ImageView
+        android:id="@+id/logo_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/image_user_activity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/exitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/exit_btn"
+        style="@style/primary_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/completeName"
+        style="@style/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_user" />
+
+    <LinearLayout
+      android:id="@+id/info_user_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintTop_toBottomOf="@id/completeName"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/buttons_container"
+      android:gravity="center"
+      android:layout_marginStart="20dp"
+
+      >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/user_name"
+          style="@style/subtitle_text"
+          />
+      <TextView
+          android:id="@+id/userName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@style/primary_text"
+          />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/acount_type"
+          android:layout_marginTop="40dp"
+          style="@style/subtitle_text"
+          />
+      <TextView
+          android:id="@+id/acountType"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          style="@style/primary_text"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/acount_number"
+          android:layout_marginTop="40dp"
+          style="@style/subtitle_text"
+          />
+      <TextView
+          android:id="@+id/numberAcount"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          style="@style/primary_text"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="40dp"
+          android:text="@string/balace"
+          style="@style/subtitle_text"
+          />
+        <TextView
+            android:id="@+id/balace"
+            android:textSize="72sp"
+            style="@style/primary_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/infoUserBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/userinfo" />
+
+        <ImageButton
+            android:id="@+id/depositBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/deposit" />
+
+        <ImageButton
+            android:id="@+id/withdrowBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/withdrow" />
+
+        <ImageButton
+            android:id="@+id/transferBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/transfer" />
+
+        <ImageButton
+            android:id="@+id/recordsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/record" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

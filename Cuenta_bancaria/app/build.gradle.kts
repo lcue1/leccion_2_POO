@@ -1,9 +1,15 @@
+import com.android.build.api.dsl.ViewBinding
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
+
+    buildFeatures {
+        viewBinding = true // Correct way to enable ViewBinding in Kotlin DSL
+    }
     namespace = "com.example.cuenta_bancaria"
     compileSdk = 35
 
@@ -19,6 +25,7 @@ android {
     }
 
     buildTypes {
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -26,6 +33,7 @@ android {
                 "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

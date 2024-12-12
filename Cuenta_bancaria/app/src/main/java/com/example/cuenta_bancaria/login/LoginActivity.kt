@@ -16,7 +16,10 @@ import com.example.cuenta_bancaria.MainActivity
 import com.example.cuenta_bancaria.R
 import com.example.cuenta_bancaria.data.DatabaseHelper
 import com.example.cuenta_bancaria.data.UserDao
+import com.example.cuenta_bancaria.register.RegisterActivity
+import com.example.cuenta_bancaria.user.UserActivity
 import com.example.cuenta_bancaria.utils.Utils
+import java.util.ArrayList
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var back_btn:ImageButton
@@ -48,8 +51,8 @@ class LoginActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
             if (validationEditText()) {
-                val login = userDao.getUserInformation(user.text.toString(), password.text.toString())
-                if(login.isEmpty()) {
+                val dataLogin = userDao.getUserInformation(user.text.toString(), password.text.toString())
+                if(dataLogin.isEmpty()) {
                     val intent =Intent(this,ProgressBarActivity::class.java)
                     intent.putExtra("targetActivity", LoginActivity::class.java)
                     startActivity(intent)
@@ -57,7 +60,8 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this,"Usuario o password incorrectos",Toast.LENGTH_LONG).show()
                 }else{
                     val intent = Intent(this, ProgressBarActivity::class.java)
-                    intent.putExtra("targetActivity",MainActivity::class.java)
+                    intent.putExtra("targetActivity",UserActivity::class.java)
+                    intent.putStringArrayListExtra("data", ArrayList(dataLogin))
                     startActivity(intent)
                     finish()
                 }

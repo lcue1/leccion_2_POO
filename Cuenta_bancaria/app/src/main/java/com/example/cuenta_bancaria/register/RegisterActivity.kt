@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +18,8 @@ import com.example.cuenta_bancaria.data.DatabaseHelper
 import com.example.cuenta_bancaria.data.UserDao
 import com.example.cuenta_bancaria.extraActivities.ProgressBarActivity
 import com.example.cuenta_bancaria.MainActivity
+import com.example.cuenta_bancaria.login.LoginActivity
+import com.example.cuenta_bancaria.utils.Utils
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var editTexts:List<EditText>// used to validate edittext in foreach
@@ -23,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var savingRadio:RadioButton
     private lateinit var checkRadio:RadioButton
     private lateinit var registerBtn:Button
+    private lateinit var backBtn:ImageButton
 
     //db
     private  lateinit var dbHealper:DatabaseHelper
@@ -41,6 +46,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initAtributes() {
+        backBtn=findViewById(R.id.back_btn)
         editTexts = listOf( findViewById(R.id.name_editTtext),
                      findViewById(R.id.balance_etitText),
                     findViewById(R.id.user_etitText),
@@ -58,6 +64,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun addEventListeners() {
+        backBtn.setOnClickListener {
+            Utils.goAnotherActivity(this,MainActivity::class.java)
+            finishActivity(1)
+        }
+
+
         editTexts.forEach { editText ->
             editText.setOnFocusChangeListener { _, hasFocus ->
                 if (!hasFocus && editText.text.isBlank()) {
@@ -93,7 +105,7 @@ class RegisterActivity : AppCompatActivity() {
             )
             if(loadData>=0){
                 val intent = Intent(this, ProgressBarActivity::class.java)
-                intent.putExtra("targetActivity", MainActivity::class.java) // Replace with your actual target activity
+                intent.putExtra("targetActivity", LoginActivity::class.java) // Replace with your actual target activity
                 startActivity(intent)
                 Toast.makeText(this,"Usuario agregado exitosamente!",Toast.LENGTH_LONG).show()
             }else{

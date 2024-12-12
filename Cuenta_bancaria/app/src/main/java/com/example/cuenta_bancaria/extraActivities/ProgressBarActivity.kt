@@ -1,5 +1,6 @@
 package com.example.cuenta_bancaria.extraActivities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -25,9 +26,14 @@ class ProgressBarActivity : AppCompatActivity() {
         }
         initAtributtes()
         val targetActivity = intent.getSerializableExtra("targetActivity") as? Class<*>
+        val secondActivityData = intent.getStringArrayListExtra("data")
         Utils.showProgressBar(progressBar,loadingAnimation){
             if (targetActivity != null) {
-                Utils.goAnotherActivity(this, targetActivity)
+                val intent = Intent(this,targetActivity)
+                if(secondActivityData!=null){
+                    intent.putStringArrayListExtra("data",secondActivityData)
+                }
+                startActivity(intent)
             }
         }
 

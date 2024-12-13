@@ -29,12 +29,15 @@
         }
 
         fun insertUser(name: String, numberAcount: String, balance: Double, username: String, password: String, typeAcount: String): Long {
+            var round=String.format("%.2f", balance).toDouble()
+            round = round.toDouble()
+
             val db = dbHelper.writableDatabase
             return try {
                 val values = ContentValues().apply {
                     put(COLUMN_NAME, name)
                     put(COLUMN_NUMBERACOUNT, numberAcount)
-                    put(COLUMN_BALANCE, balance)
+                    put(COLUMN_BALANCE, round)
                     put(COLUMN_USERNAME, username)
                     put(COLUMN_PASSWORD, password)
                     put(COLUMN_TYPE_ACOUNT, typeAcount)
@@ -106,11 +109,13 @@
 
         //update deposit
         fun updateBalance(accountNumber: String, newBalance: Double): Int {
+            var round=String.format("%.2f", newBalance).toDouble()
+            round = round.toDouble()
             val db = dbHelper.writableDatabase
 
             // Create ContentValues object to hold the new balance
             val values = ContentValues().apply {
-                put(COLUMN_BALANCE, newBalance)
+                put(COLUMN_BALANCE, round)
             }
 
             // Define the selection criteria (where clause)
@@ -127,5 +132,39 @@
             } finally {
                 db.close() // Always close the database
             }
+        }
+        fun getOneUserInformation(userAcount: String): ArrayList<String> {
+            val db = dbHelper.readableDatabase
+            val userDetails = ArrayList<String>()
+
+            // Define the selection criteria
+            val selection = "$COLUMN_NUMBERACOUNT = ?"
+            val selectionArgs = arrayOf(userAcount)
+
+            // Query the database
+            val cursor: Cursor = db.query(
+                TABLE_NAME, // Table name
+                null, // Columns (null means all columns)
+                selection, // Selection (WHERE clause)
+                selectionArgs, // Selection arguments
+                null, // Group by
+                null, // Having
+                null // Order by
+            )
+
+            with(cursor) {
+                if (moveToFirst()) {
+                    // Extract user information
+                    userDetails.add(getString(getColumnIndexOrThrow(COLUMN_NAME)))
+                    userDetails.add(getString(getColumnIndexOrThrow(COLUMN_NUMBERACOUNT)))
+                    userDetails.add(getDouble(getColumnIndexOrThrow(COLUMN_BALANCE)).toString())
+                    userDetails.add(getString(getColumnIndexOrThrow(COLUMN_USERNAME)))
+                    userDetails.add(getString(getColumnIndexOrThrow(COLUMN_TYPE_ACOUNT)))
+                }
+            }
+
+            cursor.close() // Always close the cursor
+            db.close() // Always close the database
+            return userDetails
         }
     }

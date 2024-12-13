@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             Utils.goAnotherActivity(this,RegisterActivity::class.java)
         }
         exitBtn.setOnClickListener {
-
+            finishAffinity()
         }
     }
 }

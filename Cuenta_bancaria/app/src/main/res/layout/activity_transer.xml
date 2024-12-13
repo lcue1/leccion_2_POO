@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.TranserActivity"
+    android:orientation="vertical"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        >
+
+        <ImageView
+            android:id="@+id/logo_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/transfer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:layout_marginStart="32dp"
+       android:layout_marginEnd="32dp"
+
+       >
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/title_transfer"
+           android:layout_marginTop="64dp"
+           style="@style/title_text"
+           />
+       <TextView
+           android:id="@+id/completeNameUser"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="64dp"
+           style="@style/title_text"
+           />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/acount_number"
+           style="@style/subtitle_text"
+           />
+
+       <TextView
+           android:id="@+id/acountNumber"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           style="@style/title_text"
+           />
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="64dp"
+           android:text="Ingrese el monto a transferir"
+           style="@style/primary_text"
+           />
+
+       <EditText
+           android:id="@+id/transferValue"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="@string/amount_to_transfer"
+           android:inputType="numberDecimal"
+           style="@style/edit_text"
+           />
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="64dp"
+           android:text="Selceccione la cuenta de destino"
+           style="@style/primary_text"
+           />
+       <RadioGroup
+           android:id="@+id/acountsGroup"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           />
+
+       <Button
+           android:id="@+id/transfer_btn"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="64dp"
+           android:text="transferir"
+           />
+
+   </LinearLayout>
+
+</LinearLayout>

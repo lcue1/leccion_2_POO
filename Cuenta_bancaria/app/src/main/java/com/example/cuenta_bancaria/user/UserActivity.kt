@@ -1,5 +1,6 @@
 package com.example.cuenta_bancaria.user
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,14 +22,33 @@ import com.example.cuenta_bancaria.data.UserDao
 import com.example.cuenta_bancaria.databinding.ActivityMainBinding
 import com.example.cuenta_bancaria.databinding.ActivityUserBinding
 import com.example.cuenta_bancaria.utils.Utils
+import kotlin.math.log
 
 class UserActivity : AppCompatActivity() {
     private  var userData:ArrayList<String>?=null
     private lateinit var binding: ActivityUserBinding
     private lateinit var helper:DatabaseHelper
     private lateinit var userDao:UserDao
+    private lateinit var transferActivityLauncher: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_user)
+        //Handle transfer activity
+        transferActivityLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val balanceUpdated = userDao.getOneUserInformation(userData?.get(1) ?: "undefined")
+
+                binding.balace.text= balanceUpdated[2]
+
+
+                    val data = result.data
+                // Handle the result returned from TransferActivity
+                val returnedData = data?.getStringExtra("result_key")
+            }
+        }
+
 
         // Initialize ViewBinding
         binding = ActivityUserBinding.inflate(layoutInflater)
@@ -58,7 +80,11 @@ class UserActivity : AppCompatActivity() {
             depositWithdrawAcount(this,false)
         }
         binding.transferBtn.setOnClickListener {
-            
+            val intent = Intent(this, TranserActivity::class.java)
+            val balanceUpdated = userDao.getOneUserInformation(userData?.get(1) ?: "undefined")
+            intent.putStringArrayListExtra("data", java.util.ArrayList(balanceUpdated))
+            transferActivityLauncher.launch(intent)
+
         }
 
     }
@@ -104,12 +130,16 @@ class UserActivity : AppCompatActivity() {
                             if (operation<0){
                                 Toast.makeText(this,"Tu saldo es insuficiente",Toast.LENGTH_LONG).show()
                             }else{
-                                userDao.updateBalance(binding.numberAcount.text.toString().toString(),operation)
-                                binding.balace.text = operation.toString()
+                                var round=String.format("%.2f", operation).toDouble()
+                                round = round.toDouble()
+                                userDao.updateBalance(binding.numberAcount.text.toString().toString(),round)
+                                binding.balace.text = round.toString()
                             }
                         }else{
-                            userDao.updateBalance(binding.numberAcount.text.toString().toString(),operation)
-                            binding.balace.text = operation.toString()
+                            var round=String.format("%.2f", operation).toDouble()
+                            round = round.toDouble()
+                            userDao.updateBalance(binding.numberAcount.text.toString().toString(),round)
+                            binding.balace.text = round.toString()
                         }
 
 

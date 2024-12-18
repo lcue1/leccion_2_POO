@@ -104,8 +104,8 @@ class UserActivity : AppCompatActivity() {
         if(userInformation[5]!="null"){
             val imageUri = Uri.parse(userInformation[5])
             binding.logoUser.setImageURI(imageUri)
-            Log.d("uri string",userInformation[5].toString())
-            Log.d("uri uti",imageUri.toString())
+            Log.d("uri string",userInformation[5])
+            Log.d("userinformationnnnnn",imageUri.toString())
         }
     }
 

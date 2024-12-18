@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -22,6 +21,7 @@ import com.example.cuenta_bancaria.login.LoginActivity
 import com.example.cuenta_bancaria.utils.Utils
 
 class RegisterActivity : AppCompatActivity() {
+    //Atributos
     private lateinit var editTexts:List<EditText>// used to validate edittext in foreach
     private lateinit var editTextData:MutableList<String>
     private lateinit var savingRadio:RadioButton

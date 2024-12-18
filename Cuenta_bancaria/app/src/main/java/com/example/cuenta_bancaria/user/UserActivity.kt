@@ -3,6 +3,7 @@ package com.example.cuenta_bancaria.user
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -13,6 +14,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.cuenta_bancaria.MainActivity
@@ -98,6 +100,13 @@ class UserActivity : AppCompatActivity() {
         binding.acountType.text = userData?.get(4) ?: "Undefined"
         binding.numberAcount.text = userData?.get(1) ?: "Undefined"
         binding.balace.text = userData?.get(2) ?: "Undefined"
+        val userInformation = userDao.getOneUserInformation(binding.numberAcount.text.toString())
+        if(userInformation[5]!="null"){
+            val imageUri = Uri.parse(userInformation[5])
+            binding.logoUser.setImageURI(imageUri)
+            Log.d("uri string",userInformation[5].toString())
+            Log.d("uri uti",imageUri.toString())
+        }
     }
 
 

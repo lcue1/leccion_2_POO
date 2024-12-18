@@ -1,6 +1,8 @@
 package com.example.cuenta_bancaria.register
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -19,11 +22,13 @@ import com.example.cuenta_bancaria.extraActivities.ProgressBarActivity
 import com.example.cuenta_bancaria.MainActivity
 import com.example.cuenta_bancaria.login.LoginActivity
 import com.example.cuenta_bancaria.utils.Utils
+import de.hdodenhof.circleimageview.CircleImageView
 
 class RegisterActivity : AppCompatActivity() {
     //Atributos
     private lateinit var editTexts:List<EditText>// used to validate edittext in foreach
     private lateinit var editTextData:MutableList<String>
+    private lateinit var image:CircleImageView
     private lateinit var savingRadio:RadioButton
     private lateinit var checkRadio:RadioButton
     private lateinit var registerBtn:Button
@@ -46,6 +51,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun initAtributes() {
+        image=findViewById(R.id.image)
         backBtn=findViewById(R.id.back_btn)
         editTexts = listOf( findViewById(R.id.name_editTtext),
                      findViewById(R.id.balance_etitText),
@@ -64,6 +70,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun addEventListeners() {
+        image.setOnClickListener{
+            selectImage()
+        }
         backBtn.setOnClickListener {
             Utils.goAnotherActivity(this,MainActivity::class.java)
             finishActivity(1)
@@ -89,13 +98,14 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun insertUserInBD() {
 
-        if (validateFields()) {
+        if (validateFields()) {//valida campos
             if (savingRadio.isChecked){
                 editTextData.add("Ahorros")
             }else{
                 editTextData.add("Corriente")
             }
-            val loadData=userDao.insertUser(
+            val loadData=userDao.insertUser(//save in BD
+                image = imageUri.toString(),
                 name = editTextData[0],
                 numberAcount = generateNumberAcount(),
                 balance = editTextData[1].toDouble(),
@@ -135,6 +145,21 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
         return isValid
+    }
+
+//Load image in ircle
+    private fun selectImage() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*" // Selección de cualquier tipo de imagen
+        register.launch(intent)
+    }
+    var imageUri: Uri?=null
+    private val register = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            imageUri = data?.data
+            image.setImageURI(imageUri) // Muestra la imagen en el ImageView
+        }
     }
 }
 

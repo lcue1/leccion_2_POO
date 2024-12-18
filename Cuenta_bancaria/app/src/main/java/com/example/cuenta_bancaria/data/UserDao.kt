@@ -6,6 +6,7 @@
     class UserDao(private val dbHelper: DatabaseHelper) {
 
         companion object {
+            const val COLUMN_IMAGE = "IMAGE"
             const val TABLE_NAME = "users"
             const val COLUMN_ID = "id"
             const val COLUMN_NUMBERACOUNT = "numberAcount"
@@ -17,6 +18,7 @@
 
             const val CREATE_TABLE = """
                 CREATE TABLE $TABLE_NAME (
+                    $COLUMN_IMAGE TEXT,
                     $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     $COLUMN_NAME TEXT,
                     $COLUMN_NUMBERACOUNT TEXT UNIQUE,
@@ -28,13 +30,14 @@
             """
         }
 
-        fun insertUser(name: String, numberAcount: String, balance: Double, username: String, password: String, typeAcount: String): Long {
+        fun insertUser(image:String, name: String, numberAcount: String, balance: Double, username: String, password: String, typeAcount: String): Long {
             var round=String.format("%.2f", balance).toDouble()
             round = round.toDouble()
 
             val db = dbHelper.writableDatabase
             return try {
                 val values = ContentValues().apply {
+                    put(COLUMN_IMAGE, image)
                     put(COLUMN_NAME, name)
                     put(COLUMN_NUMBERACOUNT, numberAcount)
                     put(COLUMN_BALANCE, round)
@@ -160,6 +163,7 @@
                     userDetails.add(getDouble(getColumnIndexOrThrow(COLUMN_BALANCE)).toString())
                     userDetails.add(getString(getColumnIndexOrThrow(COLUMN_USERNAME)))
                     userDetails.add(getString(getColumnIndexOrThrow(COLUMN_TYPE_ACOUNT)))
+                    userDetails.add(getString(getColumnIndexOrThrow(COLUMN_IMAGE)))
                 }
             }
 
